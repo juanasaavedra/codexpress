@@ -163,8 +163,70 @@
     .hero__buttons {
       display: flex;
       flex-wrap: wrap;
-      gap: 1rem;
+      gap: 1.2rem;
       justify-content: center;
+      align-items: stretch;
+    }
+
+    .hero__spotlight {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      padding: 1.5rem 1.8rem;
+      border-radius: 28px;
+      border: 1px solid rgba(0, 255, 127, 0.45);
+      background: linear-gradient(125deg, rgba(0, 255, 127, 0.18) 0%, rgba(0, 255, 127, 0.05) 55%, rgba(0, 255, 127, 0.12) 100%);
+      box-shadow: 0 28px 65px rgba(0, 255, 127, 0.28);
+      isolation: isolate;
+      overflow: hidden;
+      width: min(420px, 100%);
+      margin: 1.8rem auto 2.2rem;
+    }
+
+    .hero__spotlight::before {
+      content: "";
+      position: absolute;
+      inset: -12px;
+      border-radius: inherit;
+      background: radial-gradient(circle, rgba(0, 255, 127, 0.45) 0%, rgba(0, 255, 127, 0) 70%);
+      opacity: 0.6;
+      filter: blur(22px);
+      z-index: -2;
+      animation: heroSpotlightPulse 5s ease-in-out infinite;
+    }
+
+    .hero__spotlight::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0));
+      mix-blend-mode: screen;
+      opacity: 0.35;
+      pointer-events: none;
+    }
+
+    .hero__spotlight-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.35em;
+      color: rgba(13, 16, 18, 0.85);
+      background: rgba(0, 255, 127, 0.75);
+      border-radius: 999px;
+      padding: 0.4rem 1rem;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+    }
+
+    .hero__spotlight-note {
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(242, 245, 244, 0.75);
+      text-align: center;
+      line-height: 1.5;
     }
 
     .btn {
@@ -181,6 +243,69 @@
       border: none;
       cursor: pointer;
       transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .btn__icon {
+      display: inline-flex;
+      align-items: center;
+      font-size: 1.2em;
+      line-height: 1;
+    }
+
+    .btn-spotlight {
+      font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+      padding: 1.15rem 3.4rem;
+      letter-spacing: 0.28em;
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      isolation: isolate;
+    }
+
+    .btn-spotlight::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -120%;
+      width: 120%;
+      height: 100%;
+      background: linear-gradient(120deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
+      opacity: 0;
+      transition: transform 0.7s ease, opacity 0.7s ease;
+      transform: skewX(-18deg);
+      z-index: -1;
+    }
+
+    .btn-spotlight:hover::before {
+      transform: translateX(210%) skewX(-18deg);
+      opacity: 1;
+    }
+
+    .btn-spotlight::after {
+      content: "";
+      position: absolute;
+      inset: -8px;
+      border-radius: inherit;
+      background: radial-gradient(circle, rgba(0, 255, 127, 0.35) 0%, rgba(0, 255, 127, 0) 70%);
+      filter: blur(12px);
+      z-index: -2;
+      opacity: 0.9;
+      animation: heroSpotlightPulse 6s ease-in-out infinite;
+    }
+
+    @keyframes heroSpotlightPulse {
+      0% {
+        transform: scale(0.95);
+        opacity: 0.5;
+      }
+      50% {
+        transform: scale(1.02);
+        opacity: 0.85;
+      }
+      100% {
+        transform: scale(1.08);
+        opacity: 0;
+      }
     }
 
     .btn-primary {
@@ -539,6 +664,22 @@
         letter-spacing: 0.12em;
       }
 
+      .hero__spotlight {
+        padding: 1.3rem 1.4rem;
+        gap: 0.65rem;
+        margin: 1.6rem auto 2rem;
+      }
+
+      .btn-spotlight {
+        letter-spacing: 0.22em;
+        padding: 1rem 2.6rem;
+      }
+
+      .hero__spotlight-note {
+        letter-spacing: 0.12em;
+        font-size: 0.72rem;
+      }
+
       .hero__meta {
         gap: 0.8rem;
       }
@@ -558,13 +699,20 @@
     <div class="hero__panel">
       <h1><span>&lt; CodExpress /&gt;</span>CodExpress 2025</h1>
       <p class="hero__subtitle">Una tarde, mil soluciones.</p>
+      <div class="hero__spotlight">
+        <span class="hero__spotlight-label">Inscripciones abiertas</span>
+        <a class="btn btn-primary btn-spotlight" href="https://luma.com/45x25kxk" target="_blank" rel="noopener">
+          <span>Inscribirme ahora</span>
+          <span aria-hidden="true" class="btn__icon">↗</span>
+        </a>
+        <span class="hero__spotlight-note">Cupos limitados · asegura tu lugar hoy</span>
+      </div>
       <p>Competencia de programación organizada por Computer Society UNAL. Abierta a todos los niveles, desde principiantes hasta avanzados.</p>
       <div class="hero__meta">
         <span class="meta-pill">3 de Octubre · 2:00 PM</span>
         <span class="meta-pill">Modalidad Híbrida · UNAL + Online</span>
       </div>
       <div class="hero__buttons">
-        <a class="btn btn-primary" href="https://luma.com/45x25kxk" target="_blank" rel="noopener">Inscribirme ahora</a>
         <a class="btn btn-ghost" href="https://luma.com/utavo1x6" target="_blank" rel="noopener">Registro Externos</a>
       </div>
     </div>
