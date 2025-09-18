@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CodExpress 2025 – Competencia de programación</title>
+  <meta name="description" content="Landing futurista y minimalista para CodExpress 2025, competencia de programación organizada por Computer Society UNAL.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #020405;
+      --bg-strong: #060e0a;
+      --panel: rgba(5, 19, 13, 0.85);
+      --card: rgba(4, 14, 10, 0.72);
+      --card-strong: rgba(7, 24, 17, 0.92);
+      --border: rgba(0, 255, 127, 0.42);
+      --border-soft: rgba(0, 255, 127, 0.18);
+      --text: #f1fff6;
+      --muted: #a0b9aa;
+      --accent: #00ff7f;
+      --accent-soft: rgba(0, 255, 127, 0.12);
+      --radius-lg: 28px;
+      --radius-md: 22px;
+      --shadow: 0 40px 120px rgba(0, 255, 127, 0.16);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Space Grotesk', 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      letter-spacing: 0.02em;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background: radial-gradient(520px at 18% 22%, rgba(0, 255, 127, 0.16), transparent 65%),
+        radial-gradient(640px at 78% 8%, rgba(0, 255, 127, 0.08), transparent 70%),
+        radial-gradient(520px at 80% 86%, rgba(0, 255, 127, 0.12), transparent 75%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -3;
+      background-image: linear-gradient(rgba(0, 255, 127, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 127, 0.05) 1px, transparent 1px);
+      background-size: 120px 120px;
+      opacity: 0.2;
+      pointer-events: none;
+    }
+
+    ::selection {
+      background: rgba(0, 255, 127, 0.28);
+      color: var(--bg);
+    }
+
+    h1, h2, h3, h4 {
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+
+    h2 {
+      font-size: clamp(2.1rem, 4vw, 2.8rem);
+    }
+
+    p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 72ch;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1180px, 92vw);
+      margin: 0 auto;
+    }
+
+    .section-head {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      margin-bottom: clamp(2rem, 4vw, 3rem);
+    }
+
+    .section-head span {
+      font-size: 0.75rem;
+      letter-spacing: 0.38em;
+      color: rgba(0, 255, 127, 0.6);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      padding: 1rem 2.2rem;
+      border-radius: 999px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.28em;
+      font-size: 0.85rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, border 0.3s ease;
+      cursor: pointer;
+      border: 1px solid transparent;
+    }
+
+    .btn--primary {
+      background: linear-gradient(120deg, rgba(0, 255, 127, 0.9), rgba(13, 255, 150, 1));
+      color: #02150d;
+      box-shadow: 0 28px 70px rgba(0, 255, 127, 0.32);
+    }
+
+    .btn--primary:hover {
+      transform: translateY(-2px) scale(1.01);
+      box-shadow: 0 32px 80px rgba(0, 255, 127, 0.35);
+    }
+
+    .btn--ghost {
+      background: rgba(0, 0, 0, 0.25);
+      color: var(--text);
+      border-color: rgba(0, 255, 127, 0.45);
+    }
+
+    .btn--ghost:hover {
+      background: rgba(0, 255, 127, 0.12);
+    }
+
+    header.hero {
+      position: relative;
+      padding: clamp(5rem, 9vw, 7.5rem) 0 clamp(3.5rem, 7vw, 5rem);
+      overflow: hidden;
+    }
+
+    .hero__inner {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(2.5rem, 6vw, 4.5rem);
+      align-items: center;
+    }
+
+    .hero__copy {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .hero__eyebrow {
+      font-size: 0.8rem;
+      letter-spacing: 0.5em;
+      color: rgba(0, 255, 127, 0.65);
+      text-transform: uppercase;
+    }
+
+    .hero__title {
+      font-size: clamp(3.8rem, 9vw, 6.5rem);
+      letter-spacing: 0.12em;
+      line-height: 0.92;
+      margin: 0;
+    }
+
+    .hero__title span {
+      display: block;
+      font-size: clamp(1.1rem, 2.4vw, 1.6rem);
+      letter-spacing: 0.6em;
+      color: rgba(0, 255, 127, 0.7);
+      margin-bottom: 0.6rem;
+    }
+
+    .hero__subtitle {
+      font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+      color: rgba(241, 255, 246, 0.82);
+    }
+
+    .hero__meta {
+      display: grid;
+      gap: 1.2rem;
+    }
+
+    .hero__meta-item {
+      display: grid;
+      gap: 0.2rem;
+    }
+
+    .hero__meta-item dt {
+      font-size: 0.75rem;
+      letter-spacing: 0.36em;
+      color: rgba(0, 255, 127, 0.58);
+    }
+
+    .hero__meta-item dd {
+      margin: 0;
+      font-size: 1.05rem;
+      letter-spacing: 0.16em;
+      color: rgba(241, 255, 246, 0.88);
+    }
+
+    .hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .hero__screen {
+      position: relative;
+    }
+
+    .terminal {
+      position: relative;
+      background: linear-gradient(160deg, rgba(6, 24, 18, 0.85), rgba(2, 12, 8, 0.96));
+      border-radius: var(--radius-lg);
+      padding: 1.6rem 1.8rem 1.9rem;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      font-family: 'JetBrains Mono', monospace;
+      color: rgba(0, 255, 127, 0.78);
+      line-height: 1.8;
+      overflow: hidden;
+      backdrop-filter: blur(8px);
+    }
+
+    .terminal::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(transparent, rgba(0, 255, 127, 0.08));
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    .terminal__header {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1.4rem;
+      letter-spacing: 0.3em;
+      font-size: 0.78rem;
+      color: rgba(0, 255, 127, 0.55);
+      text-transform: uppercase;
+    }
+
+    .terminal__lights {
+      display: flex;
+      gap: 0.6rem;
+    }
+
+    .terminal__light {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(0, 255, 127, 0.45);
+      box-shadow: 0 0 12px rgba(0, 255, 127, 0.38);
+    }
+
+    .terminal__line {
+      white-space: nowrap;
+      display: block;
+    }
+
+    .terminal__prompt {
+      color: rgba(0, 255, 127, 0.92);
+      margin-right: 0.8rem;
+    }
+
+    main {
+      padding-bottom: 5rem;
+    }
+
+    section {
+      padding: clamp(3.5rem, 7vw, 5.5rem) 0;
+      position: relative;
+    }
+
+    section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(0, 255, 127, 0.12), transparent);
+      opacity: 0.05;
+      pointer-events: none;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(2rem, 6vw, 3.5rem);
+      align-items: start;
+    }
+
+    .ascii-card {
+      background: var(--card-strong);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 2.4rem 2rem;
+      font-family: 'JetBrains Mono', monospace;
+      color: rgba(0, 255, 127, 0.7);
+      font-size: 0.92rem;
+      line-height: 1.8;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      text-align: center;
+      box-shadow: var(--shadow);
+      display: grid;
+      gap: 0.6rem;
+    }
+
+    .ascii-card span {
+      color: rgba(0, 255, 127, 0.9);
+    }
+
+    .participation__grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(2rem, 6vw, 4rem);
+      align-items: start;
+    }
+
+    .steps {
+      counter-reset: step;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 1.8rem;
+    }
+
+    .step {
+      background: var(--card);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-soft);
+      padding: 1.9rem 2rem 1.9rem 3.6rem;
+      position: relative;
+      box-shadow: inset 0 0 0 1px rgba(0, 255, 127, 0.08);
+    }
+
+    .step::before {
+      counter-increment: step;
+      content: counter(step, decimal-leading-zero);
+      position: absolute;
+      top: 1.6rem;
+      left: 1.4rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.4em;
+      color: rgba(0, 255, 127, 0.55);
+    }
+
+    .step h3 {
+      margin: 0 0 0.8rem;
+      letter-spacing: 0.22em;
+      font-size: 1.05rem;
+      color: rgba(241, 255, 246, 0.92);
+    }
+
+    .step p {
+      margin-bottom: 0.8rem;
+    }
+
+    .step ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 0.4rem;
+    }
+
+    .step ul li {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0.6rem;
+    }
+
+    .step ul li::before {
+      content: "›";
+      color: var(--accent);
+    }
+
+    .qr-panel {
+      background: var(--panel);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 2.4rem 2rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+      display: grid;
+      gap: 1rem;
+    }
+
+    .qr-panel strong {
+      font-size: 0.9rem;
+      letter-spacing: 0.32em;
+      color: rgba(241, 255, 246, 0.85);
+      text-transform: uppercase;
+    }
+
+    .qr-panel img {
+      width: min(240px, 80%);
+      margin: 0 auto;
+      display: block;
+      filter: drop-shadow(0 20px 35px rgba(0, 255, 127, 0.3));
+    }
+
+    .qr-panel span {
+      font-size: 0.75rem;
+      letter-spacing: 0.38em;
+      color: rgba(0, 255, 127, 0.58);
+    }
+
+    .levels__shell {
+      background: rgba(5, 20, 14, 0.85);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-soft);
+      padding: clamp(2.6rem, 6vw, 4rem);
+      box-shadow: var(--shadow);
+      display: grid;
+      gap: 2.4rem;
+    }
+
+    .levels__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.8rem;
+    }
+
+    .level-card {
+      background: rgba(0, 0, 0, 0.22);
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(0, 255, 127, 0.25);
+      padding: 1.8rem;
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    .level-card h3 {
+      margin: 0;
+      letter-spacing: 0.24em;
+      font-size: 0.95rem;
+      color: rgba(0, 255, 127, 0.82);
+    }
+
+    .level-card strong {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.9rem;
+      color: rgba(241, 255, 246, 0.9);
+    }
+
+    .resources__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.6rem;
+    }
+
+    .resource {
+      display: grid;
+      gap: 0.7rem;
+      padding: 1.6rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-soft);
+      background: rgba(0, 0, 0, 0.18);
+      transition: border 0.3s ease, transform 0.3s ease;
+    }
+
+    .resource span {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 255, 127, 0.12);
+      font-size: 1rem;
+      color: rgba(0, 255, 127, 0.85);
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.1em;
+    }
+
+    .resource strong {
+      letter-spacing: 0.16em;
+      color: rgba(241, 255, 246, 0.9);
+      text-transform: uppercase;
+      font-size: 0.95rem;
+    }
+
+    .resource:hover {
+      border-color: rgba(0, 255, 127, 0.45);
+      transform: translateY(-4px);
+    }
+
+    .benefits {
+      background: rgba(0, 0, 0, 0.22);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-lg);
+      padding: clamp(2.4rem, 5vw, 3.5rem);
+      box-shadow: var(--shadow);
+      display: grid;
+      gap: 1.8rem;
+      text-align: center;
+    }
+
+    .benefits h2 {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      margin: 0;
+    }
+
+    .benefits__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.6rem;
+    }
+
+    .benefit {
+      display: grid;
+      gap: 0.6rem;
+      padding: 1.4rem;
+      background: rgba(0, 0, 0, 0.18);
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(0, 255, 127, 0.18);
+    }
+
+    .benefit span {
+      font-size: 1.6rem;
+    }
+
+    .workshops__layout {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(2rem, 6vw, 4rem);
+      align-items: center;
+    }
+
+    .workshops__info {
+      display: grid;
+      gap: 1.4rem;
+    }
+
+    .workshops__card {
+      background: rgba(0, 0, 0, 0.18);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2.2rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+      display: grid;
+      gap: 1rem;
+    }
+
+    .workshops__card img {
+      width: min(220px, 78%);
+      margin: 0 auto;
+      filter: drop-shadow(0 18px 30px rgba(0, 255, 127, 0.28));
+    }
+
+    .final-cta {
+      background: linear-gradient(150deg, rgba(1, 12, 8, 0.95), rgba(0, 0, 0, 0.92));
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: clamp(3.2rem, 7vw, 4.5rem);
+      text-align: center;
+      box-shadow: var(--shadow);
+      display: grid;
+      gap: 1.8rem;
+    }
+
+    .final-cta h2 {
+      font-size: clamp(3rem, 6vw, 4.2rem);
+      margin: 0;
+      letter-spacing: 0.3em;
+    }
+
+    footer {
+      padding: 3rem 0 4rem;
+      text-align: center;
+      color: rgba(156, 186, 172, 0.75);
+      letter-spacing: 0.16em;
+      font-size: 0.8rem;
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .footer__brand {
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.32em;
+      color: rgba(241, 255, 246, 0.9);
+    }
+
+    .footer__links {
+      display: flex;
+      justify-content: center;
+      gap: 1.6rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 1024px) {
+      .hero__inner,
+      .split,
+      .participation__grid,
+      .workshops__layout {
+        grid-template-columns: 1fr;
+      }
+
+      .hero__copy {
+        text-align: center;
+        align-items: center;
+      }
+
+      .hero__meta,
+      .hero__actions {
+        justify-content: center;
+      }
+
+      .hero__screen {
+        max-width: 460px;
+        margin: 0 auto;
+      }
+
+      .ascii-card,
+      .qr-panel,
+      .workshops__card {
+        max-width: 460px;
+        margin: 0 auto;
+      }
+    }
+
+    @media (max-width: 600px) {
+      body {
+        letter-spacing: 0.01em;
+      }
+
+      .btn {
+        padding-inline: 1.6rem;
+        letter-spacing: 0.22em;
+      }
+
+      .hero__title {
+        letter-spacing: 0.08em;
+      }
+
+      .step {
+        padding-left: 3rem;
+      }
+
+      .step::before {
+        left: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="container hero__inner">
+      <div class="hero__copy">
+        <span class="hero__eyebrow">Computer Society UNAL</span>
+        <h1 class="hero__title"><span>CodExpress</span>2025</h1>
+        <p class="hero__subtitle">Una tarde, mil soluciones.</p>
+        <p>Competencia de programación organizada por Computer Society UNAL. Abierta a todos los niveles, desde principiantes hasta avanzados.</p>
+        <dl class="hero__meta">
+          <div class="hero__meta-item">
+            <dt>Fecha</dt>
+            <dd>3 de Octubre – 2:00 PM</dd>
+          </div>
+          <div class="hero__meta-item">
+            <dt>Modalidad</dt>
+            <dd>Híbrido · UNAL + Online</dd>
+          </div>
+        </dl>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="https://luma.com/45x25kxk" target="_blank" rel="noopener">Inscribirme ahora</a>
+        </div>
+      </div>
+      <div class="hero__screen" aria-hidden="true">
+        <div class="terminal">
+          <div class="terminal__header">
+            <div class="terminal__lights">
+              <span class="terminal__light"></span>
+              <span class="terminal__light"></span>
+              <span class="terminal__light"></span>
+            </div>
+            <span>codexpress.sh</span>
+          </div>
+          <span class="terminal__line"><span class="terminal__prompt">$</span> boot CodExpress --year 2025</span>
+          <span class="terminal__line"><span class="terminal__prompt">$</span> loading participants ███████</span>
+          <span class="terminal__line"><span class="terminal__prompt">$</span> syncing creativity ███████</span>
+          <span class="terminal__line"><span class="terminal__prompt">$</span> building hybrid_hub ███████</span>
+          <span class="terminal__line"><span class="terminal__prompt">$</span> status ▸ ready_for_launch ✓</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="que-es">
+      <div class="container split">
+        <div>
+          <div class="section-head">
+            <span>Insight</span>
+            <h2>¿Qué es CodExpress?</h2>
+          </div>
+          <p>CodExpress es una competencia de programación del capítulo estudiantil Computer Society UNAL. Su propósito es desafiar las habilidades de los estudiantes y mostrar cómo los aprendizajes en matemáticas y física se relacionan con la computación.</p>
+        </div>
+        <div class="ascii-card" aria-hidden="true">
+          <span>&lt;CODE&gt;</span>
+          <span>//{ 01100011 01101111 01100100 01100101 }</span>
+          <span>[ READY · SET · BUILD ]</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="como-participar">
+      <div class="container">
+        <div class="section-head">
+          <span>Steps</span>
+          <h2>Cómo participar</h2>
+        </div>
+        <div class="participation__grid">
+          <ol class="steps">
+            <li class="step">
+              <h3>Regístrate en Luma</h3>
+              <p>Selecciona el enlace de inscripción según tu perfil.</p>
+              <ul>
+                <li><a href="https://luma.com/45x25kxk" target="_blank" rel="noopener">Estudiantes UNAL</a></li>
+                <li><a href="https://luma.com/utavo1x6" target="_blank" rel="noopener">Externos</a></li>
+              </ul>
+            </li>
+            <li class="step">
+              <h3>Realiza el pago</h3>
+              <p>Confirma tu participación completando el pago de la inscripción.</p>
+              <ul>
+                <li>Estudiantes UNAL: 5.000 COP</li>
+                <li>Externos: 10.000 COP</li>
+              </ul>
+            </li>
+            <li class="step">
+              <h3>Prepárate para el reto</h3>
+              <p>Bloquea el 3 de octubre en tu agenda y repasa tus mejores estrategias.</p>
+            </li>
+          </ol>
+          <aside class="qr-panel">
+            <strong>Escanea para inscribirte</strong>
+            <img src="assets/qr-inscripcion.svg" alt="Código QR para inscripción en Luma">
+            <span>CodExpress 2025</span>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="niveles">
+      <div class="container">
+        <div class="levels__shell">
+          <div class="section-head">
+            <span>Tracks</span>
+            <h2>Niveles de competencia</h2>
+          </div>
+          <div class="levels__grid">
+            <article class="level-card">
+              <h3>Nivel Básico</h3>
+              <strong>Fundamentos y lógica de programación</strong>
+              <p>Simuladores matemáticos simples y lógica en Python.</p>
+              <p>Relación con cursos: Fundamentos de matemáticas, Programación I.</p>
+            </article>
+            <article class="level-card">
+              <h3>Nivel Intermedio</h3>
+              <strong>Estructuras de datos y POO inicial</strong>
+              <p>Proyectos en Python, Java o C++.</p>
+              <p>Ejemplos: sistema de colas, agendas académicas.</p>
+            </article>
+            <article class="level-card">
+              <h3>Avanzado Ligero</h3>
+              <strong>Algoritmos y eficiencia</strong>
+              <p>Algoritmos de búsqueda (BFS, DFS), optimización en Python y C++.</p>
+              <p>Relación con cursos: Algoritmos, Matemáticas discretas.</p>
+            </article>
+            <article class="level-card">
+              <h3>Integración y Sistemas</h3>
+              <strong>Aplicaciones completas y multidisciplinarias</strong>
+              <p>Apps con bases de datos y APIs (Python + JavaScript).</p>
+              <p>Ejemplo: sistema CRUD, chat simple, integración de servicios.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="recursos">
+      <div class="container">
+        <div class="section-head">
+          <span>Toolkit</span>
+          <h2>Recursos de preparación</h2>
+          <p>Material recomendado para fortalecer tus habilidades antes del evento.</p>
+        </div>
+        <div class="resources__grid">
+          <a class="resource" href="https://www.youtube.com" target="_blank" rel="noopener">
+            <span>▶</span>
+            <strong>Playlist de fundamentos en Python (UNAL)</strong>
+            <p>Refuerza lógica, sintaxis y resolución de problemas en Python.</p>
+          </a>
+          <a class="resource" href="https://www.coursera.org/learn/python" target="_blank" rel="noopener">
+            <span>▶</span>
+            <strong>Programming for Everybody – Univ. of Michigan</strong>
+            <p>Curso introductorio para dominar programación desde cero.</p>
+          </a>
+          <a class="resource" href="https://www.coursera.org/specializations/data-structures-algorithms" target="_blank" rel="noopener">
+            <span>▶</span>
+            <strong>Data Structures and Algorithms – UC San Diego</strong>
+            <p>Domina estructuras, algoritmos y análisis de complejidad.</p>
+          </a>
+          <a class="resource" href="https://www.coursera.org/learn/sql-data-science" target="_blank" rel="noopener">
+            <span>▶</span>
+            <strong>Bases de datos en SQL con Python – IBM</strong>
+            <p>Aprende a conectar Python con bases de datos relacionales.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="beneficios">
+      <div class="container benefits">
+        <h2>Compite, aprende y gana.</h2>
+        <div class="benefits__grid">
+          <div class="benefit"><span>🎓</span><p>Certificados de participación.</p></div>
+          <div class="benefit"><span>✨</span><p>Agendas, esferos y detalles del capítulo estudiantil.</p></div>
+          <div class="benefit"><span>💰</span><p>Premios en efectivo (hasta 50.000 COP).</p></div>
+          <div class="benefit"><span>🌍</span><p>Aporte a la financiación de proyectos estudiantiles en IA y computación cuántica.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="talleres">
+      <div class="container workshops__layout">
+        <div class="workshops__info">
+          <div class="section-head">
+            <span>Labs</span>
+            <h2>Talleres relacionados</h2>
+          </div>
+          <p>Antes y durante el evento realizaremos talleres prácticos sobre Python, algoritmos, APIs, inteligencia artificial, y consejos para ganar competencias de programación. Abiertos a todo público.</p>
+          <a class="btn btn--ghost" href="assets/qr-tallerista.svg" target="_blank" rel="noopener">Quiero ser tallerista</a>
+        </div>
+        <div class="workshops__card" aria-hidden="true">
+          <strong>Escanea y propón tu taller</strong>
+          <img src="assets/qr-tallerista.svg" alt="Código QR para propuestas de talleres">
+        </div>
+      </div>
+    </section>
+
+    <section id="cta-final">
+      <div class="container">
+        <div class="final-cta">
+          <h2>¿Listo para el reto?</h2>
+          <p>CodExpress te espera este 3 de octubre. Inscríbete y demuestra tu talento.</p>
+          <a class="btn btn--primary" href="https://luma.com/45x25kxk" target="_blank" rel="noopener">Inscribirme en Luma</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer__brand">Computer Society UNAL</div>
+      <div class="footer__links">
+        <span>Contacto: <a href="mailto:computer_fbog@unal.edu.co">computer_fbog@unal.edu.co</a></span>
+        <span>@computersocietyunal</span>
+      </div>
+      <small>Evento estudiantil sin ánimo de lucro. Los aportes recaudados apoyan la investigación y la participación en eventos internacionales.</small>
+    </div>
+  </footer>
+</body>
+</html>
