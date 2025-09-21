@@ -3,871 +3,557 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CodExpress 2025 – Competencia de programación</title>
-
-  <meta name="description" content="CodExpress 2025, competencia de programación híbrida organizada por Computer Society UNAL. Descubre cómo participar, niveles, talleres y premios.">
+  <title>CodExpress 2025 · Competencia de programación</title>
+  <meta name="description" content="CodExpress 2025 es la competencia de programación de Computer Society UNAL. Únete el 3 de octubre y elige tu nivel para competir.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Chakra+Petch:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #050505;
-      --bg-alt: #0d1012;
-      --bg-soft: #11171c;
-      --accent: #00FF7F;
-      --accent-soft: rgba(0, 255, 127, 0.2);
-      --text: #f2f5f4;
-      --muted: #9da6aa;
-      --card-border: rgba(0, 255, 127, 0.25);
-      --shadow: 0 25px 60px rgba(0, 255, 127, 0.15);
+      --black: #000000;
+      --white: #ffffff;
+      --green: #00FF66;
+      --gray: #1f1f1f;
+      --transition: 0.25s ease;
     }
 
-    * {
+    *, *::before, *::after {
       box-sizing: border-box;
     }
 
     body {
       margin: 0;
-      font-family: 'Space Grotesk', 'Chakra Petch', 'Segoe UI', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
-      letter-spacing: 0.01em;
-      overflow-x: hidden;
+      font-family: 'Space Grotesk', 'Segoe UI', sans-serif;
+      background-color: var(--white);
+      color: var(--black);
+      line-height: 1.4;
+      letter-spacing: 0.02em;
     }
 
-    h1, h2, h3, h4 {
-      font-family: 'Chakra Petch', 'Space Grotesk', 'Segoe UI', sans-serif;
+    h1, h2, h3 {
       font-weight: 700;
-      text-transform: uppercase;
       letter-spacing: 0.08em;
-    }
-
-    h2 {
-      font-size: clamp(2rem, 4vw, 2.8rem);
-      margin-bottom: 0.8rem;
+      text-transform: uppercase;
+      margin: 0;
     }
 
     p {
-      max-width: 65ch;
-      color: var(--muted);
+      margin: 0;
+      font-size: 1.05rem;
     }
 
-    section {
+    .section {
       padding: 5rem 0;
-      position: relative;
+    }
+
+    .section--dark {
+      background-color: var(--black);
+      color: var(--white);
+    }
+
+    .section--light {
+      background-color: var(--white);
+      color: var(--black);
     }
 
     .container {
-      width: min(1200px, 90vw);
+      width: min(1100px, 92vw);
       margin: 0 auto;
     }
 
     .hero {
-      min-height: 100vh;
-      display: grid;
+      display: flex;
       align-items: center;
-      justify-items: center;
-      text-align: center;
-      padding: 6rem 0 4rem;
-      position: relative;
-      overflow: hidden;
+      min-height: 90vh;
     }
 
-    .hero::before,
-    .hero::after {
-      content: "";
-      position: absolute;
-      width: 60vw;
-      height: 60vw;
-      max-width: 900px;
-      max-height: 900px;
-      background: radial-gradient(circle, rgba(0, 255, 127, 0.25) 0%, rgba(0, 255, 127, 0.05) 60%, rgba(0, 0, 0, 0) 75%);
-      filter: blur(60px);
-      z-index: -2;
-    }
-
-    .hero::before {
-      top: -20vh;
-      left: -20vw;
-    }
-
-    .hero::after {
-      bottom: -25vh;
-      right: -15vw;
-    }
-
-    .hero__panel {
-      background: rgba(5, 5, 5, 0.65);
-      backdrop-filter: blur(24px);
-      border: 1px solid rgba(0, 255, 127, 0.25);
-      border-radius: 28px;
-      padding: clamp(2.5rem, 5vw, 4rem);
-      box-shadow: var(--shadow);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero__panel::before {
-      content: "{ CODE IN MOTION }";
-      position: absolute;
-      top: 18px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 0.85rem;
-      letter-spacing: 0.4em;
-      color: rgba(0, 255, 127, 0.45);
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-
-    .hero h1 {
-      font-size: clamp(3.8rem, 11vw, 7rem);
-      margin: 0 0 1rem;
-      color: var(--text);
-      text-shadow: 0 0 22px rgba(0, 255, 127, 0.25);
-    }
-
-    .hero h1 span {
-      display: block;
-      font-size: clamp(1.15rem, 2vw, 1.4rem);
-      letter-spacing: 0.7em;
-      color: rgba(0, 255, 127, 0.65);
-      margin-bottom: 0.9rem;
-    }
-
-    .hero__subtitle {
-      font-size: clamp(1.2rem, 2.3vw, 1.6rem);
-      color: rgba(242, 245, 244, 0.82);
+    .hero__tagline {
+      font-size: clamp(2.6rem, 6vw, 4.2rem);
+      line-height: 1.1;
       margin-bottom: 1.5rem;
     }
 
+    .hero__subtext {
+      font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+      max-width: 32ch;
+      margin-bottom: 2.5rem;
+    }
+
     .hero__meta {
+      display: grid;
+      gap: 1.2rem;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero__prices {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
-      gap: 1.5rem;
-      margin: 2rem 0 2.75rem;
-    }
-
-    .meta-pill {
-      border: 1px solid rgba(0, 255, 127, 0.4);
-      border-radius: 999px;
-      padding: 0.75rem 1.5rem;
-      font-size: 0.95rem;
-      letter-spacing: 0.2em;
-      color: rgba(255, 255, 255, 0.8);
-      background: rgba(17, 23, 28, 0.8);
-    }
-
-    .hero__buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.2rem;
-      justify-content: center;
-      align-items: stretch;
-    }
-
-    .hero__spotlight {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.75rem;
-      padding: 1.5rem 1.8rem;
-      border-radius: 28px;
-      border: 1px solid rgba(0, 255, 127, 0.45);
-      background: linear-gradient(125deg, rgba(0, 255, 127, 0.18) 0%, rgba(0, 255, 127, 0.05) 55%, rgba(0, 255, 127, 0.12) 100%);
-      box-shadow: 0 28px 65px rgba(0, 255, 127, 0.28);
-      isolation: isolate;
-      overflow: hidden;
-      width: min(420px, 100%);
-      margin: 1.8rem auto 2.2rem;
-    }
-
-    .hero__spotlight::before {
-      content: "";
-      position: absolute;
-      inset: -12px;
-      border-radius: inherit;
-      background: radial-gradient(circle, rgba(0, 255, 127, 0.45) 0%, rgba(0, 255, 127, 0) 70%);
-      opacity: 0.6;
-      filter: blur(22px);
-      z-index: -2;
-      animation: heroSpotlightPulse 5s ease-in-out infinite;
-    }
-
-    .hero__spotlight::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      background: linear-gradient(90deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0));
-      mix-blend-mode: screen;
-      opacity: 0.35;
-      pointer-events: none;
-    }
-
-    .hero__spotlight-label {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.35em;
-      color: rgba(13, 16, 18, 0.85);
-      background: rgba(0, 255, 127, 0.75);
-      border-radius: 999px;
-      padding: 0.4rem 1rem;
-      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
-    }
-
-    .hero__spotlight-note {
-      font-size: 0.78rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(242, 245, 244, 0.75);
-      text-align: center;
-      line-height: 1.5;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.4rem;
-      padding: 0.95rem 2.6rem;
-      border-radius: 999px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      font-size: 0.95rem;
-      border: none;
-      cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-    }
-
-    .btn__icon {
-      display: inline-flex;
-      align-items: center;
-      font-size: 1.2em;
-      line-height: 1;
-    }
-
-    .btn-spotlight {
-      font-size: clamp(1.05rem, 2.2vw, 1.35rem);
-      padding: 1.15rem 3.4rem;
-      letter-spacing: 0.28em;
-      position: relative;
-      overflow: hidden;
-      width: 100%;
-      isolation: isolate;
-    }
-
-    .btn-spotlight::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -120%;
-      width: 120%;
-      height: 100%;
-      background: linear-gradient(120deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
-      opacity: 0;
-      transition: transform 0.7s ease, opacity 0.7s ease;
-      transform: skewX(-18deg);
-      z-index: -1;
-    }
-
-    .btn-spotlight:hover::before {
-      transform: translateX(210%) skewX(-18deg);
-      opacity: 1;
-    }
-
-    .btn-spotlight::after {
-      content: "";
-      position: absolute;
-      inset: -8px;
-      border-radius: inherit;
-      background: radial-gradient(circle, rgba(0, 255, 127, 0.35) 0%, rgba(0, 255, 127, 0) 70%);
-      filter: blur(12px);
-      z-index: -2;
-      opacity: 0.9;
-      animation: heroSpotlightPulse 6s ease-in-out infinite;
-    }
-
-    @keyframes heroSpotlightPulse {
-      0% {
-        transform: scale(0.95);
-        opacity: 0.5;
-      }
-      50% {
-        transform: scale(1.02);
-        opacity: 0.85;
-      }
-      100% {
-        transform: scale(1.08);
-        opacity: 0;
-      }
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: #030303;
-      box-shadow: 0 15px 40px rgba(0, 255, 127, 0.45);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 20px 48px rgba(0, 255, 127, 0.55);
-    }
-
-    .btn-ghost {
-      background: rgba(0, 0, 0, 0.35);
-      border: 1px solid rgba(0, 255, 127, 0.45);
-      color: var(--text);
-    }
-
-    .btn-ghost:hover {
-      transform: translateY(-3px);
-      background: rgba(0, 255, 127, 0.1);
-    }
-
-    .section-title {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      letter-spacing: 0.35em;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-      color: rgba(0, 255, 127, 0.7);
-    }
-
-    .section-title::before {
-      content: "\\25BA";
-      font-size: 0.8rem;
-      color: rgba(0, 255, 127, 0.8);
-    }
-
-    .terminal-banner {
-      font-family: 'Chakra Petch', monospace;
-      background: linear-gradient(90deg, rgba(0, 255, 127, 0.25), rgba(0, 255, 127, 0));
-      border-left: 4px solid var(--accent);
-      padding: 0.85rem 1.2rem;
-      margin-bottom: 2rem;
-      color: rgba(255, 255, 255, 0.85);
-      text-transform: uppercase;
-      letter-spacing: 0.3em;
-    }
-
-    .two-column {
-      display: grid;
-      gap: 2.8rem;
-      align-items: center;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    }
-
-    .ascii-art {
-      font-family: "Cascadia Mono", "Fira Code", monospace;
-      font-size: 1rem;
-      line-height: 1.2;
-      color: rgba(0, 255, 127, 0.8);
-      background: rgba(4, 8, 10, 0.8);
-      border: 1px solid rgba(0, 255, 127, 0.25);
-      border-radius: 18px;
-      padding: 1.8rem;
-      box-shadow: var(--shadow);
-    }
-
-    .participar-grid {
-      display: grid;
-      gap: 3rem;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      align-items: center;
-    }
-
-    .steps {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      counter-reset: pasos;
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-    }
-
-    .steps li {
-      counter-increment: pasos;
-      background: rgba(9, 14, 16, 0.9);
-      border: 1px solid rgba(0, 255, 127, 0.25);
-      border-radius: 20px;
-      padding: 1.4rem 1.8rem 1.4rem 4.2rem;
-      position: relative;
-      line-height: 1.6;
-      color: rgba(239, 243, 242, 0.85);
-    }
-
-    .steps li::before {
-      content: "0" counter(pasos);
-      position: absolute;
-      left: 1.4rem;
-      top: 1.15rem;
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--accent);
-      letter-spacing: 0.2em;
-    }
-
-    .steps strong {
-      display: block;
-      font-size: 1.05rem;
-      color: var(--text);
-      letter-spacing: 0.12em;
-      margin-bottom: 0.4rem;
-    }
-
-    .qr-card {
-      background: rgba(4, 6, 8, 0.9);
-      border-radius: 24px;
-      border: 1px solid rgba(0, 255, 127, 0.25);
-      padding: 2rem;
-      text-align: center;
-      box-shadow: var(--shadow);
-    }
-
-    .qr-card img {
-      width: min(240px, 70%);
-      aspect-ratio: 1;
-      margin-bottom: 1rem;
-      border-radius: 16px;
-      border: 8px solid rgba(0, 255, 127, 0.15);
-      background: rgba(0, 255, 127, 0.05);
-    }
-
-    .qr-card .qr-label {
-      text-transform: uppercase;
-      letter-spacing: 0.3em;
-      font-size: 0.75rem;
-      color: rgba(255, 255, 255, 0.65);
-    }
-
-    .levels {
-      background: #0b0d10;
-      border-radius: 32px;
-      padding: 3.5rem 3rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .levels::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(120deg, rgba(0, 255, 127, 0.08), transparent 45%);
-      opacity: 0.6;
-      pointer-events: none;
-    }
-
-    .level-grid {
-      display: grid;
-      gap: 1.8rem;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      position: relative;
-      z-index: 1;
-    }
-
-    .level-card {
-      background: rgba(5, 7, 9, 0.85);
-      border: 1px solid var(--card-border);
-      border-radius: 22px;
-      padding: 1.8rem;
-      min-height: 220px;
-      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.4);
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
-    }
-
-    .level-card h3 {
-      font-size: 1rem;
-      letter-spacing: 0.18em;
-      color: var(--accent);
-      margin: 0;
-    }
-
-    .level-card p {
-      color: rgba(220, 231, 228, 0.9);
-      margin: 0;
-    }
-
-    .resources-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.8rem;
-    }
-
-    .resource-card {
-      background: rgba(7, 10, 11, 0.9);
-      border-radius: 20px;
-      padding: 1.6rem;
-      border: 1px solid rgba(0, 255, 127, 0.2);
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-      transition: transform 0.2s ease, border 0.2s ease;
-    }
-
-    .resource-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(0, 255, 127, 0.5);
-    }
-
-    .resource-card .resource-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 16px;
-      display: grid;
-      place-items: center;
-      background: rgba(0, 255, 127, 0.1);
-      border: 1px solid rgba(0, 255, 127, 0.3);
-      color: var(--accent);
-      font-size: 1.4rem;
-      font-family: 'Chakra Petch', monospace;
-    }
-
-    .benefits {
-      background: rgba(5, 7, 9, 0.8);
-      border-radius: 28px;
-      border: 1px solid rgba(0, 255, 127, 0.25);
-      padding: 2.6rem;
-      box-shadow: var(--shadow);
-    }
-
-    .benefits ul {
-      list-style: none;
-      padding: 0;
-      margin: 2rem 0 0;
-      display: grid;
-      gap: 1rem;
-    }
-
-    .benefits li {
-      font-size: 1rem;
-      color: rgba(232, 238, 236, 0.9);
-      letter-spacing: 0.05em;
-    }
-
-    .talleres {
-      background: rgba(2, 4, 5, 0.92);
-      border-radius: 26px;
-      border: 1px solid rgba(0, 255, 127, 0.2);
-      padding: 3rem;
-      display: grid;
       gap: 2rem;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      margin-bottom: 3rem;
+      font-size: 1.1rem;
+    }
+
+    .price-tag {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .price-tag span:first-child {
+      font-size: 0.85rem;
+      letter-spacing: 0.25em;
+      opacity: 0.7;
+    }
+
+    .price-tag span:last-child {
+      font-size: 1.8rem;
+    }
+
+    .button {
+      display: inline-flex;
       align-items: center;
+      justify-content: center;
+      padding: 1.25rem 2.8rem;
+      border: 2px solid var(--green);
+      background-color: transparent;
+      color: inherit;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.28em;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color var(--transition), color var(--transition);
+      border-radius: 0;
     }
 
-    .qr-mini {
-      text-align: center;
+    .button--primary {
+      background-color: var(--green);
+      color: var(--black);
     }
 
-    .qr-mini img {
-      width: 180px;
-      height: 180px;
-      border-radius: 16px;
-      border: 6px solid rgba(0, 255, 127, 0.2);
-      background: rgba(0, 255, 127, 0.05);
+    .button--primary:hover,
+    .button--primary:focus-visible {
+      background-color: var(--green);
+      color: var(--black);
+    }
+
+    .button--outline {
+      border-color: var(--black);
+      color: var(--black);
+      background-color: transparent;
+    }
+
+    .button--outline:hover,
+    .button--outline:focus-visible {
+      background-color: var(--green);
+      color: var(--black);
+      border-color: var(--green);
+    }
+
+    .section__title {
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      margin-bottom: 1rem;
+    }
+
+    .section__lead {
+      font-size: clamp(1.1rem, 2.2vw, 1.6rem);
+      margin-bottom: 3rem;
+      max-width: 60ch;
+    }
+
+    .info-columns {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .info-columns h3 {
+      font-size: 1rem;
       margin-bottom: 0.75rem;
     }
 
-    .cta-final {
-      background: radial-gradient(circle at top, rgba(0, 255, 127, 0.25), rgba(5, 5, 5, 0.95));
+    .info-columns p {
+      font-size: 1rem;
+    }
+
+    .levels-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 2rem;
+    }
+
+    .level-card {
+      border: 2px solid var(--white);
+      padding: 2.5rem 2rem;
+      min-height: 240px;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .level-card h3 {
+      font-size: 1.1rem;
+    }
+
+    .tickets-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .ticket-card {
+      border: 2px solid var(--black);
+      padding: 2.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .ticket-price {
+      font-size: clamp(2.4rem, 5vw, 3.2rem);
+    }
+
+    .ticket-card p {
+      font-size: 1rem;
+      max-width: 28ch;
+    }
+
+    .section--dark .ticket-card {
+      border-color: var(--white);
+    }
+
+    .cta {
       text-align: center;
-      padding: 5rem 1rem 6rem;
-      border-radius: 36px;
-      border: 1px solid rgba(0, 255, 127, 0.2);
-      box-shadow: var(--shadow);
     }
 
-    .cta-final h2 {
-      font-size: clamp(2.6rem, 6vw, 4.4rem);
-      letter-spacing: 0.5em;
-      margin-bottom: 1rem;
+    .cta h2 {
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      margin-bottom: 1.5rem;
     }
 
-    .cta-final p {
-      margin: 0 auto 2.5rem;
-      max-width: 50ch;
-      color: rgba(240, 245, 244, 0.8);
+    .cta p {
+      font-size: 1.1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .faq {
+      display: grid;
+      gap: 1.5rem;
+      max-width: 700px;
+    }
+
+    .faq details {
+      border: 2px solid var(--black);
+      padding: 1.5rem 1.8rem;
+      background-color: var(--white);
+    }
+
+    .faq summary {
+      list-style: none;
+      cursor: pointer;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      font-size: 1rem;
+    }
+
+    .faq summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq summary::after {
+      content: '+';
+      float: right;
+    }
+
+    .faq details[open] summary::after {
+      content: '−';
+    }
+
+    .faq p {
+      margin-top: 1rem;
+      font-size: 1rem;
     }
 
     footer {
-      margin-top: 4rem;
-      padding: 2.5rem 0 3rem;
-      border-top: 1px solid rgba(0, 255, 127, 0.15);
+      background-color: var(--black);
+      color: var(--white);
+      padding: 3rem 0;
       text-align: center;
-      color: rgba(150, 160, 162, 0.75);
-      font-size: 0.9rem;
-      letter-spacing: 0.15em;
     }
 
-    .footer__logo {
+    .footer__brand {
       font-size: 1.2rem;
-      font-weight: 700;
-      letter-spacing: 0.45em;
+      letter-spacing: 0.25em;
+      margin-bottom: 1rem;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.85);
-      margin-bottom: 1.2rem;
-      display: inline-block;
+      display: block;
     }
 
     .footer__links {
       display: flex;
       justify-content: center;
       gap: 1.5rem;
-      flex-wrap: wrap;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.5rem;
     }
 
     .footer__links a {
-      color: rgba(255, 255, 255, 0.75);
-      text-decoration: none;
-      font-weight: 600;
-      letter-spacing: 0.2em;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-size: 0.9rem;
     }
 
-    .footer__links a:hover {
-      color: var(--accent);
+    .footer__links a:hover,
+    .footer__links a:focus-visible {
+      color: var(--green);
     }
 
-    .tiny-note {
-      margin-top: 1.5rem;
-      font-size: 0.75rem;
-      color: rgba(130, 140, 142, 0.75);
-      letter-spacing: 0.08em;
+    .signup-modal {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.85);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      z-index: 100;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
+    .signup-modal.is-open {
+      display: flex;
     }
 
-    @media (max-width: 640px) {
-      section {
+    .signup-modal__content {
+      background-color: var(--white);
+      color: var(--black);
+      padding: 3rem 3.5rem;
+      text-align: center;
+      max-width: 420px;
+      width: 100%;
+      display: grid;
+      gap: 1.5rem;
+      border: 2px solid var(--black);
+    }
+
+    .signup-modal__question {
+      font-size: 1.2rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .signup-modal__actions {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .signup-modal__close {
+      justify-self: center;
+      font-size: 0.85rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      border: none;
+      background: none;
+      color: var(--black);
+      cursor: pointer;
+    }
+
+    @media (max-width: 780px) {
+      .hero {
+        min-height: auto;
+      }
+
+      .hero__prices {
+        gap: 1.5rem;
+      }
+
+      .section {
         padding: 4rem 0;
       }
 
-      .hero__panel {
-        padding: 2.2rem 1.6rem 3rem;
-      }
-
-      .hero h1 {
-        letter-spacing: 0.12em;
-      }
-
-      .hero__spotlight {
-        padding: 1.3rem 1.4rem;
-        gap: 0.65rem;
-        margin: 1.6rem auto 2rem;
-      }
-
-      .btn-spotlight {
-        letter-spacing: 0.22em;
-        padding: 1rem 2.6rem;
-      }
-
-      .hero__spotlight-note {
-        letter-spacing: 0.12em;
-        font-size: 0.72rem;
-      }
-
-      .hero__meta {
-        gap: 0.8rem;
-      }
-
-      .cta-final h2 {
-        letter-spacing: 0.3em;
-      }
-
-      footer {
-        letter-spacing: 0.08em;
+      .signup-modal__content {
+        padding: 2.5rem;
       }
     }
   </style>
 </head>
 <body>
-  <header class="hero">
-    <div class="hero__panel">
-      <h1><span>&lt; CodExpress /&gt;</span>CodExpress 2025</h1>
-      <p class="hero__subtitle">Una tarde, mil soluciones.</p>
-      <div class="hero__spotlight">
-        <span class="hero__spotlight-label">Inscripciones abiertas</span>
-        <a class="btn btn-primary btn-spotlight" href="https://luma.com/45x25kxk" target="_blank" rel="noopener">
-          <span>Inscribirme ahora</span>
-          <span aria-hidden="true" class="btn__icon">↗</span>
-        </a>
-        <span class="hero__spotlight-note">Cupos limitados · asegura tu lugar hoy</span>
-      </div>
-      <p>Competencia de programación organizada por Computer Society UNAL. Abierta a todos los niveles, desde principiantes hasta avanzados.</p>
+  <header class="section section--dark hero" id="inicio">
+    <div class="container">
+      <div class="hero__tagline">CodExpress es donde programadores se convierten en creadores</div>
+      <p class="hero__subtext">Una competencia de programación de una tarde completa. Trae tus ideas, tu portátil y toda tu energía.</p>
       <div class="hero__meta">
-        <span class="meta-pill">3 de Octubre · 2:00 PM</span>
-        <span class="meta-pill">Modalidad Híbrida · UNAL + Online</span>
+        <span>3 de octubre – Híbrido (UNAL Bogotá + online)</span>
+        <span>3 horas · 2:00 PM – 5:00 PM</span>
       </div>
-      <div class="hero__buttons">
-        <a class="btn btn-ghost" href="https://luma.com/utavo1x6" target="_blank" rel="noopener">Registro Externos</a>
+      <div class="hero__prices">
+        <div class="price-tag">
+          <span>Estudiantes UNAL</span>
+          <span>5.000 COP</span>
+        </div>
+        <div class="price-tag">
+          <span>Externos</span>
+          <span>10.000 COP</span>
+        </div>
       </div>
+      <button type="button" class="button button--primary js-signup">Inscribirme ahora</button>
     </div>
   </header>
 
   <main>
-    <section id="que-es">
+    <section class="section section--light" id="sobre">
       <div class="container">
-        <div class="section-title">¿Qué es CodExpress?</div>
-        <div class="two-column">
+        <h2 class="section__title">CodExpress 2025</h2>
+        <p class="section__lead">Un evento de 3 horas para demostrar tus habilidades, aprender y competir junto a la comunidad de Computer Society UNAL.</p>
+        <div class="info-columns">
           <div>
-            <div class="terminal-banner">/** Enciende tu modo competitivo */</div>
-            <p>CodExpress es una competencia de programación del capítulo estudiantil Computer Society UNAL. Su propósito es desafiar las habilidades de los estudiantes y mostrar cómo los aprendizajes en matemáticas y física se relacionan con la computación.</p>
+            <h3>Fecha y hora</h3>
+            <p>3 de octubre, 2:00 PM – 5:00 PM.</p>
           </div>
-          <pre aria-hidden="true" class="ascii-art">
-   ______      ____   _________
-  / ____/___  / __/  / ____/   |  
- / /   / __ \/ /_   / /   / /| |  
-/ /___/ /_/ / __/  / /___/ ___ |  
-\____/\____/_/     \____/_/  |_|  
-{   CODExpress   }</pre>
+          <div>
+            <h3>Modalidad</h3>
+            <p>Presencial (UNAL Bogotá) + participación online simultánea.</p>
+          </div>
+          <div>
+            <h3>Organiza</h3>
+            <p>IEEE Computer Society UNAL.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="como-participar">
+    <section class="section section--dark" id="niveles">
       <div class="container">
-        <div class="section-title">Cómo participar</div>
-        <div class="participar-grid">
-          <ol class="steps">
-            <li>
-              <strong>Regístrate en Luma</strong>
-              Selecciona tu categoría: estudiantes UNAL o participantes externos.
-            </li>
-            <li>
-              <strong>Realiza el pago de la inscripción</strong>
-              Estudiantes UNAL: 5.000 COP · Externos: 10.000 COP.
-            </li>
-            <li>
-              <strong>Prepárate para el 3 de octubre</strong>
-              Organiza tu equipo, revisa los recursos y activa tu modo resolución.
-            </li>
-          </ol>
-          <div class="qr-card">
-            <img src="assets/qr-inscripcion.svg" alt="Código QR para la inscripción a CodExpress">
-            <div class="qr-label">Escanéalo desde tu móvil</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="niveles">
-      <div class="container levels">
-        <div class="section-title">Niveles de competencia</div>
-        <div class="level-grid">
+        <h2 class="section__title">Niveles de competencia</h2>
+        <div class="levels-grid">
           <article class="level-card">
             <h3>Nivel Básico</h3>
-            <p>Fundamentos y lógica de programación. Simuladores matemáticos simples y lógica en Python.</p>
-            <p><strong>Relación con cursos:</strong> Fundamentos de matemáticas, Programación I.</p>
+            <p>Fundamentos y lógica con Python. Ideal para tu primer acercamiento a las competencias.</p>
           </article>
           <article class="level-card">
             <h3>Nivel Intermedio</h3>
-            <p>Estructuras de datos y POO inicial. Proyectos en Python, Java o C++.</p>
-            <p><strong>Ejemplos:</strong> sistema de colas, agendas académicas.</p>
+            <p>Estructuras y POO con Python, Java o C++. Perfecto para quienes ya dominan lo esencial.</p>
           </article>
           <article class="level-card">
-            <h3>Nivel Avanzado Ligero</h3>
-            <p>Algoritmos y eficiencia con énfasis en BFS/DFS y optimización en Python y C++.</p>
-            <p><strong>Relación con cursos:</strong> Algoritmos, Matemáticas discretas.</p>
+            <h3>Nivel Avanzado</h3>
+            <p>Algoritmos y eficiencia en Python o C++ para resolver problemas complejos bajo presión.</p>
           </article>
           <article class="level-card">
-            <h3>Integración y Sistemas</h3>
-            <p>Aplicaciones completas y multidisciplinarias con bases de datos y APIs (Python + JavaScript).</p>
-            <p><strong>Ejemplo:</strong> sistema CRUD, chat simple, integración de servicios.</p>
+            <h3>Nivel Integración</h3>
+            <p>Apps completas con Python y JavaScript. Reta tus habilidades construyendo soluciones reales.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="recursos">
+    <section class="section section--light" id="tickets">
       <div class="container">
-        <div class="section-title">Recursos de preparación</div>
-        <div class="resources-grid">
-          <article class="resource-card">
-            <div class="resource-icon">▶</div>
-            <h3>Playlist Python UNAL</h3>
-            <p><a href="https://www.youtube.com" target="_blank" rel="noopener">Playlist de fundamentos en Python (UNAL)</a>.</p>
+        <h2 class="section__title">Tickets</h2>
+        <div class="tickets-grid">
+          <article class="ticket-card">
+            <div>
+              <h3>Entrada UNAL</h3>
+              <div class="ticket-price">5.000 COP</div>
+            </div>
+            <p>Incluye participación en un nivel, acompañamiento de mentores y certificado digital.</p>
+            <a class="button button--primary" href="https://luma.com/45x25kxk" target="_blank" rel="noopener">Registrar ahora</a>
           </article>
-          <article class="resource-card">
-            <div class="resource-icon">◈</div>
-            <h3>Programming for Everybody</h3>
-            <p><a href="https://www.coursera.org/learn/python" target="_blank" rel="noopener">Curso “Programming for Everybody” – Univ. of Michigan</a>.</p>
-          </article>
-          <article class="resource-card">
-            <div class="resource-icon">⌘</div>
-            <h3>Data Structures &amp; Algorithms</h3>
-            <p><a href="https://www.coursera.org/specializations/data-structures-algorithms" target="_blank" rel="noopener">Especialización – UC San Diego</a>.</p>
-          </article>
-          <article class="resource-card">
-            <div class="resource-icon">DB</div>
-            <h3>Bases de datos en SQL</h3>
-            <p><a href="https://www.coursera.org/learn/sql-data-science" target="_blank" rel="noopener">Bases de datos en SQL con Python – IBM</a>.</p>
+          <article class="ticket-card">
+            <div>
+              <h3>Entrada Externos</h3>
+              <div class="ticket-price">10.000 COP</div>
+            </div>
+            <p>Incluye participación en un nivel, acompañamiento de mentores y certificado digital.</p>
+            <a class="button button--primary" href="https://luma.com/utavo1x6" target="_blank" rel="noopener">Registrar ahora</a>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="beneficios">
-      <div class="container benefits">
-        <h2>Compite, aprende y gana.</h2>
-        <p>Vive la experiencia CodExpress con comunidad, mentoría y sorpresas diseñadas para impulsar tu camino en la computación.</p>
-        <ul>
-          <li>🎓 Certificados de participación.</li>
-          <li>✨ Agendas, esferos y detalles del capítulo estudiantil.</li>
-          <li>💰 Premios en efectivo (hasta 50.000 COP).</li>
-          <li>🌍 Aporte a la financiación de proyectos estudiantiles en IA y computación cuántica.</li>
-        </ul>
+    <section class="section section--dark" id="cta">
+      <div class="container cta">
+        <h2>Aparta tu lugar hoy. Cupos limitados.</h2>
+        <p>CodExpress reúne mentes curiosas, retos exigentes y el respaldo de la IEEE Computer Society UNAL.</p>
+        <button type="button" class="button button--primary js-signup">Inscribirme en CodExpress</button>
       </div>
     </section>
 
-    <section id="talleres">
-      <div class="container talleres">
-        <div>
-          <div class="section-title">Talleres relacionados</div>
-          <p>Antes y durante el evento realizaremos talleres prácticos sobre Python, algoritmos, APIs, inteligencia artificial y consejos para ganar competencias de programación. Abiertos a todo público.</p>
-          <a class="btn btn-ghost" href="https://forms.gle/CodExpressTalleristas" target="_blank" rel="noopener">Quiero ser tallerista</a>
-        </div>
-        <div class="qr-mini">
-          <img src="assets/qr-tallerista.svg" alt="QR para enviar propuestas de talleres">
-          <div class="qr-label">qr-tallerista</div>
-        </div>
-      </div>
-    </section>
-
-    <section id="cta-final">
-      <div class="container cta-final">
-        <h2>¿Listo para el reto?</h2>
-        <p>CodExpress te espera este 3 de octubre. Inscríbete y demuestra tu talento.</p>
-        <div class="hero__buttons">
-          <a class="btn btn-primary" href="https://luma.com/45x25kxk" target="_blank" rel="noopener">Inscribirme en Luma</a>
-          <a class="btn btn-ghost" href="https://luma.com/utavo1x6" target="_blank" rel="noopener">Registro Externos</a>
+    <section class="section section--light" id="faq">
+      <div class="container">
+        <h2 class="section__title">Preguntas frecuentes</h2>
+        <div class="faq">
+          <details>
+            <summary>¿Necesito experiencia previa?</summary>
+            <p>No, habrá retos desde nivel básico. Puedes elegir el nivel que mejor se ajuste a tu experiencia actual.</p>
+          </details>
+          <details>
+            <summary>¿Habrá premios?</summary>
+            <p>Sí, además de regalos de Computer Society UNAL habrá reconocimientos para los equipos destacados.</p>
+          </details>
+          <details>
+            <summary>¿Qué debo llevar?</summary>
+            <p>Computador portátil o acceso remoto si participas online. No olvides tus herramientas favoritas para programar.</p>
+          </details>
         </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="footer__logo">Computer Society UNAL</div>
-    <div>Contacto: <a href="mailto:computer_fbog@unal.edu.co">computer_fbog@unal.edu.co</a></div>
-    <div class="footer__links">
-      <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
-      <a href="https://www.facebook.com" target="_blank" rel="noopener" aria-label="Facebook">Facebook</a>
-      <a href="https://www.linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a>
+    <div class="container">
+      <span class="footer__brand">IEEE Computer Society · UNAL</span>
+      <p>Contacto: <a href="mailto:computer_fibog@unal.edu.co" style="color: inherit;">computer_fibog@unal.edu.co</a></p>
+      <div class="footer__links">
+        <a href="https://www.instagram.com/computersocietyun" target="_blank" rel="noopener">Instagram</a>
+      </div>
     </div>
-    <div class="tiny-note">Evento estudiantil sin ánimo de lucro. Los aportes recaudados apoyan la investigación y la participación en eventos internacionales.</div>
   </footer>
+
+  <div class="signup-modal" id="signupModal" role="dialog" aria-modal="true" aria-labelledby="signupTitle">
+    <div class="signup-modal__content">
+      <div id="signupTitle" class="signup-modal__question">¿Eres estudiante de la UN?</div>
+      <div class="signup-modal__actions">
+        <a class="button button--primary" href="https://luma.com/45x25kxk" target="_blank" rel="noopener">Sí, soy de la UN</a>
+        <a class="button button--outline" href="https://luma.com/utavo1x6" target="_blank" rel="noopener">No, soy externo</a>
+      </div>
+      <button type="button" class="signup-modal__close" data-close-modal>Cerrar</button>
+    </div>
+  </div>
+
+  <script>
+    const signupButtons = document.querySelectorAll('.js-signup');
+    const modal = document.getElementById('signupModal');
+    const closeButtons = modal.querySelectorAll('[data-close-modal]');
+
+    const openModal = () => {
+      modal.classList.add('is-open');
+    };
+
+    const closeModal = () => {
+      modal.classList.remove('is-open');
+    };
+
+    signupButtons.forEach(button => {
+      button.addEventListener('click', openModal);
+    });
+
+    closeButtons.forEach(btn => {
+      btn.addEventListener('click', closeModal);
+    });
+
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        closeModal();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && modal.classList.contains('is-open')) {
+        closeModal();
+      }
+    });
+  </script>
 </body>
 </html>
